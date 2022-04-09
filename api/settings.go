@@ -9,6 +9,7 @@ type ProviderSettings struct {
 	Discord   bool `json:"discord"`
 	GitHub    bool `json:"github"`
 	GitLab    bool `json:"gitlab"`
+	Globalid  bool `json:"globalid"`
 	Keycloak  bool `json:"keycloak"`
 	Google    bool `json:"google"`
 	Linkedin  bool `json:"linkedin"`
@@ -49,6 +50,7 @@ func (a *API) Settings(w http.ResponseWriter, r *http.Request) error {
 			Discord:   config.External.Discord.Enabled,
 			GitHub:    config.External.Github.Enabled,
 			GitLab:    config.External.Gitlab.Enabled,
+			Globalid:  config.External.Globalid.Enabled,
 			Google:    config.External.Google.Enabled,
 			Keycloak:  config.External.Keycloak.Enabled,
 			Linkedin:  config.External.Linkedin.Enabled,

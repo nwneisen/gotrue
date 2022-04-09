@@ -401,6 +401,8 @@ func (a *API) Provider(ctx context.Context, name string, scopes string, query *u
 		return provider.NewGithubProvider(config.External.Github, scopes)
 	case "gitlab":
 		return provider.NewGitlabProvider(config.External.Gitlab, scopes)
+	case "globalid":
+		return provider.NewGlobalidProvider(config.External.Globalid, scopes)
 	case "google":
 		return provider.NewGoogleProvider(config.External.Google, scopes)
 	case "keycloak":

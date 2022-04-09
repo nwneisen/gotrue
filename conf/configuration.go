@@ -94,6 +94,7 @@ type ProviderConfiguration struct {
 	Facebook    OAuthProviderConfiguration `json:"facebook"`
 	Github      OAuthProviderConfiguration `json:"github"`
 	Gitlab      OAuthProviderConfiguration `json:"gitlab"`
+	Globalid    OAuthProviderConfiguration `json:"globalid"`
 	Google      OAuthProviderConfiguration `json:"google"`
 	Notion      OAuthProviderConfiguration `json:"notion"`
 	Keycloak    OAuthProviderConfiguration `json:"keycloak"`
