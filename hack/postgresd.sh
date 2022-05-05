@@ -12,3 +12,5 @@ docker run --name gotrue_postgresql \
 	--volume postgres_data:/var/lib/postgresql/data \
 	--volume "$(pwd)"/hack/init_postgres.sql:/docker-entrypoint-initdb.d/init.sql \
 	-d postgres:13
+
+echo "You must manually stop this container with 'docker stop gotrue_postgresql'"

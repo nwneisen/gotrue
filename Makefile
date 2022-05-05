@@ -38,9 +38,18 @@ vet: # Vet the code
 dev: ## Run the development containers
 	# Start postgres first and apply migrations
 	docker-compose -f $(DEV_DOCKER_COMPOSE) up -d postgres
+	sed -i 's/@localhost:/@postgres:/g' hack/migrate.sh
 	docker-compose -f $(DEV_DOCKER_COMPOSE) run gotrue sh -c "make migrate_dev"
+	sed -i 's/@postgres:/@localhost:/g' hack/migrate.sh
 	# Actually start the containers for dev
-	docker-compose -f $(DEV_DOCKER_COMPOSE) up
+	sed -i 's/@localhost:/@postgres:/g' .env
+	docker-compose -f $(DEV_DOCKER_COMPOSE) up -d
+	docker-compose -f $(DEV_DOCKER_COMPOSE) logs -f
+
+down: ## Shutdown the development containers
+	# Start postgres first and apply migrations
+	docker-compose -f $(DEV_DOCKER_COMPOSE) down
+	sed -i 's/@postgres:/@localhost:/g' .env
 
 docker-test: ## Run the tests using the development containers
 	docker-compose -f $(DEV_DOCKER_COMPOSE) up -d postgres
